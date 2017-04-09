@@ -1,4 +1,5 @@
-app-root {
+/* Full Width/Height body */
+:host {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -8,11 +9,34 @@ app-root {
   flex-direction: column;
 }
 
-app-root > app-component-sidenav {
+:host > md-sidenav-container {
   flex: 1 1 auto;
+  overflow-y: auto;
 }
 
-app-navbar {
+:host > md-sidenav > div {
+  height: 100%;
+  overflow: auto;
+}
+
+md-toolbar {
   position: relative;
   z-index: 10;
+}
+
+md-sidenav {
+  width: 250px;
+}
+
+[md-list-item] {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+div.content {
+  padding: 20px;
+}
+
+a.active[md-list-item] {
+  background-color: #ffd740;
 }

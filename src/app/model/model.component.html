@@ -1,0 +1,24 @@
+<h1>Viewing {{model?.name}}</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Permission</th>
+      <th>Principals</th>
+    </tr>
+  </thead>
+  <tbody [sortablejs]="acls">
+    <tr *ngFor="let acl of acls">
+      <td>{{acl.method}}</td>
+      <td>{{acl.permission}}</td>
+      <td>
+        <md-chip-list>
+          <md-chip *ngFor="let principal of acl.principals">
+            {{principal.principalType}}:{{principal.principalId}}
+          </md-chip>
+        </md-chip-list>
+      </td>
+    </tr>
+  </tbody>
+</table>

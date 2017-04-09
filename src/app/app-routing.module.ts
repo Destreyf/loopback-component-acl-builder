@@ -1,18 +1,17 @@
 import {ModuleWithProviders} from "@angular/core";
-import {ComponentList} from "./pages/component-list";
 import {Routes, RouterModule} from "@angular/router";
-import {ComponentViewer} from "./pages/component-viewer/component-viewer";
-import {ComponentCategoryList} from "./pages/component-category-list/component-category-list";
-import {ComponentSidenav} from "./pages/component-sidenav/component-sidenav";
+import {HomeComponent} from "./home/home.component";
+import {ModelComponent} from "./model/model.component";
 
 const AppRoutes: Routes = [
   {
     path: '',
-    component: ComponentSidenav,
-    children: [
-      {path: '', component: ComponentCategoryList}
-    ],
+    component: HomeComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'model/:model',
+    component: ModelComponent
   }
 ];
 

@@ -63,7 +63,7 @@ function getModels(app) {
   let data = {};
   for (let i = 0; i < models.length; i++) {
     let m = models[i];
-    data[m] = getModel(app, m);
+    data[app.models[m].definition.name] = getModel(app, m);
   }
 
   return data;
