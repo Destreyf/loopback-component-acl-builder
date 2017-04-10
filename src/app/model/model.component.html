@@ -1,24 +1,40 @@
 <h1>Viewing {{model?.name}}</h1>
-
+<button md-fab [mdMenuTriggerFor]="menu">
+  <md-icon>more_vert</md-icon>
+</button>
+<md-menu #menu="mdMenu">
+  <button md-menu-item (click)="exportAcl()">
+    Export
+  </button>
+</md-menu>
 <table class="table table-bordered">
   <thead>
-    <tr>
-      <th>Method</th>
-      <th>Permission</th>
-      <th>Principals</th>
-    </tr>
+  <tr>
+    <th>Method</th>
+    <th>Permission</th>
+    <th>Principals</th>
+  </tr>
   </thead>
   <tbody [sortablejs]="acls">
-    <tr *ngFor="let acl of acls">
-      <td>{{acl.method}}</td>
-      <td>{{acl.permission}}</td>
-      <td>
-        <md-chip-list>
-          <md-chip *ngFor="let principal of acl.principals">
-            {{principal.principalType}}:{{principal.principalId}}
-          </md-chip>
-        </md-chip-list>
-      </td>
-    </tr>
+  <tr *ngFor="let acl of acls?.controls" [formGroup]="acl">
+    <td>
+      <md-select formControlName="method" [title]="acl?.get('method')?.value">
+        <md-option *ngFor="let method of methods" [value]="method.value">{{method.name}}</md-option>
+      </md-select>
+    </td>
+    <td>
+      <md-select formControlName="permission" [class]="'permission-'+acl?.get('permission')?.value">
+        <md-option value="ALLOW">ALLOW</md-option>
+        <md-option value="DENY">DENY</md-option>
+      </md-select>
+    </td>
+    <td>
+      <!-- <md-chip-list [FormGroup]="acl.principals">
+         <md-chip *ngFor="let principal of acl.principals.controls">
+           {{principal.value.principalType}}:{{principal.value.principalId}}
+         </md-chip>
+       </md-chip-list>-->
+    </td>
+  </tr>
   </tbody>
 </table>

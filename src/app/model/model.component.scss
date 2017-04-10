@@ -1,0 +1,13 @@
+button[md-fab] {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+md-select.permission-DENY /deep/ * {
+  color: red !important;
+}
+
+md-select.permission-ALLOW /deep/ * {
+  color: green !important;
+}

@@ -1,0 +1,14 @@
+/e2e
+/node_modules
+/src
+.angular-cli.json
+.editorconfig
+.gitattributes
+.gitignore
+.npmignore
+karma.conf.js
+protractor.conf.js
+README.md
+tsconfig.json
+tslint.json
+yarn.lock
