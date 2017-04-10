@@ -3,6 +3,8 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {DataShareService} from "./data-share.service";
 import {RolesService} from "./roles.service";
+import {ModelsResolverService} from "./models-resolver.service";
+import {ModelResolverService} from "./model-resolver.service";
 @NgModule({
   declarations: [],
   imports: [
@@ -11,7 +13,9 @@ import {RolesService} from "./roles.service";
   ],
   providers: [
     DataShareService,
-    RolesService
+    RolesService,
+    ModelResolverService,
+    ModelsResolverService,
   ],
   exports: []
 })

@@ -12,12 +12,14 @@ import {AppRouting} from "./app-routing.module";
 import {SharedModule} from "./shared/shared.module";
 import {ModelComponent} from "./model/model.component";
 import {HomeComponent} from "./home/home.component";
+import { AclBuilderComponent } from './acl-builder/acl-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModelComponent,
-    HomeComponent
+    HomeComponent,
+    AclBuilderComponent
   ],
   imports: [
     BrowserModule,

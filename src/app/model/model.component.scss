@@ -11,3 +11,7 @@ md-select.permission-DENY /deep/ * {
 md-select.permission-ALLOW /deep/ * {
   color: green !important;
 }
+
+md-select {
+  width: 100%;
+}

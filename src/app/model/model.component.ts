@@ -16,7 +16,8 @@ declare const document: any;
 export class ModelComponent implements OnInit, OnDestroy {
   public model: any;
   public acls: FormArray;
-  public methods: Array<any> = [];
+  public methods: any = {};
+  public methodGroups: Array<string> = [];
   public roles: Array<any> = [];
 
   private routerSub: Subscription;
@@ -30,17 +31,9 @@ export class ModelComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.routerSub = this.route.params.subscribe(data => {
-      if (this.dataShare.isShare(data['model'])) {
-        this.model = this.dataShare.getShareValue(data['model']);
-        this.buildData();
-      } else {
-        this.http.get('api/models/' + data['model']).map(res => res.json()).subscribe(res => {
-          this.dataShare.createShare(data['model'], res);
-          this.model = res;
-          this.buildData();
-        });
-      }
+    this.routerSub = this.route.data.subscribe(data => {
+      this.model = data['model'];
+      this.buildData();
     });
 
     this.rolesSub = this.rolesService.roles.subscribe(roles => this.roles = roles);
@@ -83,11 +76,40 @@ export class ModelComponent implements OnInit, OnDestroy {
       });
     }));
 
-    this.methods = [{value: '*', name: '* (any)'}];
-
+    let methods = [];
     this.model.settings.methods.forEach(m => {
-      this.methods.push({value: m.name, name: m.name});
+      methods.push({value: m.name, name: m.name});
     });
+
+    let grouped_methods = {};
+
+    grouped_methods[this.model.name] = [{value: '*', name: '* (any)'}];
+
+    let re = /__(\w*)__(\w*)/;
+
+    methods.forEach(method => {
+      let match = re.exec(method.name);
+      if (match) {
+        if (typeof(grouped_methods[match[2]]) == 'undefined') {
+          grouped_methods[match[2]] = [];
+        }
+
+        method.name = `[${match[2]}] ${match[1]}`;
+        grouped_methods[match[2]].push(method);
+      } else {
+        grouped_methods[this.model.name].push(method);
+      }
+    });
+
+    this.methodGroups = Object.keys(grouped_methods);
+
+    this.methodGroups.forEach((group) => {
+      grouped_methods[group].sort(function (a, b) {
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+      });
+    });
+
+    this.methods = grouped_methods;
   }
 
   exportAcl() {

@@ -10,8 +10,8 @@
 <table class="table table-bordered">
   <thead>
   <tr>
-    <th>Method</th>
-    <th>Permission</th>
+    <th width="250">Method</th>
+    <th width="100">Permission</th>
     <th>Principals</th>
   </tr>
   </thead>
@@ -19,7 +19,10 @@
   <tr *ngFor="let acl of acls?.controls" [formGroup]="acl">
     <td>
       <md-select formControlName="method" [title]="acl?.get('method')?.value">
-        <md-option *ngFor="let method of methods" [value]="method.value">{{method.name}}</md-option>
+        <div *ngFor="let group of methodGroups">
+          <h4>{{group}}</h4>
+          <md-option *ngFor="let method of methods[group]" [value]="method.value">{{method.name}}</md-option>
+        </div>
       </md-select>
     </td>
     <td>

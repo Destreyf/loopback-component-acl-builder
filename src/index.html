@@ -10,8 +10,119 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <style>
+
+    .spinftw {
+      border-radius: 100%;
+      display: block;
+      height: 30px;
+      width: 30px;
+      margin: 0 auto;
+      -webkit-animation: loader infinite 4s;
+      -moz-animation: loader infinite 4s;
+      animation: loader infinite 4s;
+      box-shadow: 25px 25px #3498db,
+      -25px 25px #9b59b6,
+      -25px -25px #e74c3c,
+      25px -25px #2ecc71;
+    }
+
+    @-webkit-keyframes loader {
+      0%, 100% {
+        box-shadow: 25px 25px #3498db,
+        -25px 25px #9b59b6,
+        -25px -25px #e74c3c,
+        25px -25px #2ecc71;
+      }
+      25% {
+        box-shadow: -25px 25px #3498db,
+        -25px -25px #9b59b6,
+        25px -25px #e74c3c,
+        25px 25px #2ecc71;
+      }
+      50% {
+        box-shadow: -25px -25px #3498db,
+        25px -25px #9b59b6,
+        25px 25px #e74c3c,
+        -25px 25px #2ecc71;
+      }
+      75% {
+        box-shadow: 25px -25px #3498db,
+        25px 25px #9b59b6,
+        -25px 25px #e74c3c,
+        -25px -25px #2ecc71;
+      }
+    }
+
+    @-moz-keyframes loader {
+      0%, 100% {
+        box-shadow: 25px 25px #3498db,
+        -25px 25px #9b59b6,
+        -25px -25px #e74c3c,
+        25px -25px #2ecc71;
+      }
+      25% {
+        box-shadow: -25px 25px #3498db,
+        -25px -25px #9b59b6,
+        25px -25px #e74c3c,
+        25px 25px #2ecc71;
+      }
+      50% {
+        box-shadow: -25px -25px #3498db,
+        25px -25px #9b59b6,
+        25px 25px #e74c3c,
+        -25px 25px #2ecc71;
+      }
+      75% {
+        box-shadow: 25px -25px #3498db,
+        25px 25px #9b59b6,
+        -25px 25px #e74c3c,
+        -25px -25px #2ecc71;
+      }
+    }
+
+    @keyframes loader {
+      0%, 100% {
+        box-shadow: 25px 25px #3498db,
+        -25px 25px #9b59b6,
+        -25px -25px #e74c3c,
+        25px -25px #2ecc71;
+      }
+      25% {
+        box-shadow: -25px 25px #3498db,
+        -25px -25px #9b59b6,
+        25px -25px #e74c3c,
+        25px 25px #2ecc71;
+      }
+      50% {
+        box-shadow: -25px -25px #3498db,
+        25px -25px #9b59b6,
+        25px 25px #e74c3c,
+        -25px 25px #2ecc71;
+      }
+      75% {
+        box-shadow: 25px -25px #3498db,
+        25px 25px #9b59b6,
+        -25px 25px #e74c3c,
+        -25px -25px #2ecc71;
+      }
+    }
+
+    .loading {
+      marign-top: 150px;
+    }
+
+    .spinftw {
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body class="docs-app-background">
-  <app-root>Loading...</app-root>
+<app-root>
+  <div align="center" class="loading">
+    <h2>Loading ACL Builder</h2>
+    <div class="spinftw"></div>
+  </div>
+</app-root>
 </body>
 </html>
