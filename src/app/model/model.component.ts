@@ -135,5 +135,7 @@ export class ModelComponent implements OnInit, OnDestroy {
         acls.push(n);
       });
     });
+
+    console.log("Exported ACL is ", JSON.stringify(acls));
   }
 }

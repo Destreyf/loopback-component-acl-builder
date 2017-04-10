@@ -660,6 +660,7 @@ var ModelComponent = (function () {
                 acls.push(n);
             });
         });
+        console.log("Exported ACL is ", JSON.stringify(acls));
     };
     return ModelComponent;
 }());
